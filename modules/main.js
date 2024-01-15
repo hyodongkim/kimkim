@@ -16,6 +16,7 @@ module.exports=()=>{
     // require('./app/user')('/app/user',app);
 
 
+    require('./views/showAnime')('/views/showAnime',app);
 
     // app.get('/app',(req,res,next)=>{
     //     app.route('/app')
@@ -44,12 +45,64 @@ module.exports=()=>{
     //     res.send("응답");
     // });
 
-    app.use('/',(req,res,next)=>{
-        req.user = "User";
+    app.get('/:num',(req,res,next)=>{
+        req.params.num;
+        res.send(req.params.num);
+    });
+
+
+
+
+
+
+
+    app.get('/:data',(req,res,next)=>{
+        res.send(req.datas);
+    });
+    app.get('/sub/:data',(req,res,next)=>{
+        res.send(req.datas);
+    });
+    app.get('/group/:data',(req,res,next)=>{
+        res.send(req.datas);
+    });
+
+
+    app.param('data', (req,res,next,value)=>{
+        req.datas ={
+            original :value,
+            double : value * 2
+        };
         next();
     });
 
+
+
+
+
+
+    app.param('number', (req,res,next,value)=>{
+        value = value *2;
+        next();
+    });
+
+
+    app.get('/user/:id/:number',(req,res,next)=>{
+        let ids ="";
+        let i = 0;
+        while(i < req.params.number){
+            ids = ids + req.params.id;
+            i +=1;
+
+        }
+        res.send(ids);
+    });
+
     
+
+
+
+
+
     app.get('/api/user',(req,res,next)=>{
         res.send(req.user + req.api + "응답")
     });
@@ -62,6 +115,32 @@ module.exports=()=>{
     });
     // require('.'+path +'/user')(path+'/user',app);
     // require('.'+path +'/host')(path+'/host',app);
+
+
+
+
+
+
+    app.param('nb',(req,res,next,value)=>{
+        try{
+        value =parseInt(value);
+        if(value ===1)req.user ={id :"ddd",pwd:"1234"};
+        else if(value ===2)req.user ={id :"ddd2",pwd:"12345"};
+        }
+        catch(e){}
+        next();
+    });
+
+    app.get('user/:nb',(req,res,next)=>{
+        res.sned(req.user);
+    });
+
+
+
+
+
+
+
 
     app.listen(3000,"",500,()=>{
         console.log("Server Open222222!");

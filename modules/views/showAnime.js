@@ -1,6 +1,6 @@
-module.exports = (app)=>{
-    app.get('/showUser',(req,res,next)=>{
+module.exports = (path,app)=>{
+    app.use(path,(req,res,next)=>{
 
-    res.send('showAnime');
+    res.send('showAnime!!');
     });
 };
