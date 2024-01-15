@@ -20,7 +20,7 @@ module.exports=()=>{
     const reader = require('../read');
     app.get('/:path',(req,res,next)=>{
         res.send(template(req.params.path, {title:"index제목",body:"index 내용"}));
-        // res.send(template(req.params.path, {title:"index제목",body:"index 내용"}));
+        // res.send(template(req.params.path, {...req.query,...req.body}));
     });
 
 
