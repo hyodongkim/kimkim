@@ -19,10 +19,10 @@ module.exports=(PORT)=>{
 
     const express = require('express');
     require('./defaultWare')(express,app);
+    require('../engineConnector')(express,app);
 
 
-
-
+    app.use('/',express.static('react-app/build'));              /////주의!!틀릴수 있음
 
 
     
@@ -214,7 +214,7 @@ module.exports=(PORT)=>{
 
 
 
-    app.listen(3000,"",500,()=>{
+    app.listen(5000,"",500,()=>{
         console.log("Server Open222222!");
     });
 };
