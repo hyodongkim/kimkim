@@ -1,4 +1,4 @@
-module.exports=()=>{
+module.exports=(PORT)=>{
     // let express = require('express');
     // const app = express({
     // xPoweredBy:false,
@@ -9,19 +9,30 @@ module.exports=()=>{
 
     const app = require('express')({xPoweredBy:false});
 
-    const bp = require('body-parser');
+    // const bp = require('body-parser');
+
+
+
+
+
+
+
+    const express = require('express');
+    require('./defaultWare')(express,app);
+
+
+
 
 
 
     
-    app.use(bp.urlencoded());                                            
-    const template = require('../template.js');
+    // app.use(bp.urlencoded());                                            
+    // const template = require('../template.js');
 
-    const reader = require('../read');
-    app.get('/:path',(req,res,next)=>{
-        res.send(template(req.params.path, {title:"index제목",body:"index 내용"}));
-        // res.send(template(req.params.path, {...req.query,...req.body}));
-    });
+    // app.get('/:path',(req,res,next)=>{
+    //     res.send(template(req.params.path, {title:"index제목",body:"index 내용"}));
+    //     // res.send(template(req.params.path, {...req.query,...req.body}));
+    // });
 
 
    ///// 얘 동작하려면 listen 빼고 위에꺼 빼고 다 주석처리 해야함!(app bp 도 살려놔야함)
