@@ -11,18 +11,35 @@ module.exports=(PORT)=>{
 
     // const bp = require('body-parser');
 
-
-
-
-
-
-
     const express = require('express');
-    require('./defaultWare')(express,app);
-    require('../engineConnector')(express,app);
 
 
-    app.use('/',express.static('react-app/build'));              /////주의!!틀릴수 있음
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // require('./defaultWare')(express,app);
+    // require('../engineConnector')(express,app);
+
+
+    // app.use('/',express.static('react-app/build'));              /////주의!!틀릴수 있음
+
+
+
 
 
     
